@@ -279,6 +279,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5111935373723922093, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111935373723922093, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
+      propertyPath: m_ClearFlags
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111935373723922093, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111935373723922093, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
+      propertyPath: m_FOVAxisMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7933486994720617871, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45
@@ -321,6 +337,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7933486994720617871, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767039389851547223, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
+      propertyPath: m_MinMoveDistance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9145732448375133081, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
