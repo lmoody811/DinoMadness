@@ -83,6 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8682272913170245536}
+  - component: {fileID: 8802858184369766590}
   m_Layer: 0
   m_Name: LookRoot
   m_TagString: Untagged
@@ -107,6 +108,20 @@ Transform:
   m_Father: {fileID: 7933486994720617871}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8802858184369766590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894028434628143609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2a1f0418a37fd49aec80f6ec85a22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRoot: {fileID: 7933486994720617871}
+  lookRoot: {fileID: 8682272913170245536}
 --- !u!1 &4216991219057215140
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4216991219057215140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8682272913170245536}
@@ -270,7 +285,7 @@ CharacterController:
   m_SlopeLimit: 55
   m_StepOffset: 0.2
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 1
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2379725780130444111
 MonoBehaviour:
@@ -284,7 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5a4a16f53898e459d1e05d583306c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character_Controller: {fileID: 8767039389851547223}
   speed: 5
   jump_Force: 10
 --- !u!1001 &5968119612550181166

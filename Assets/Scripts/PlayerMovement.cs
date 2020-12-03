@@ -39,8 +39,36 @@ public class PlayerMovement : MonoBehaviour
         move_Direction = transform.TransformDirection(move_Direction);
         move_Direction *= speed * Time.deltaTime;
 
+        ApplyGravity();
+
         character_Controller.Move(move_Direction);
     }
+
+    void ApplyGravity()
+    {
+        if(character_Controller.isGrounded)
+        {
+            vertical_Velocity -= gravity * Time.deltaTime;
+
+            PlayerJump();
+        }
+        else
+        {
+            vertical_Velocity -= gravity * Time.deltaTime;
+        }
+
+        move_Direction.y = vertical_Velocity * Time.deltaTime;
+    }
+
+    void PlayerJump()
+    {
+        if(character_Controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            vertical_Velocity = jump_Force;
+        }
+    }
+
+
 
 
 }
