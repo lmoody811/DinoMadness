@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
     private bool is_Aiming;
 
 
+
     void Awake()
     {
         weapon_Manager = GetComponent<WeaponManager>();
@@ -49,10 +50,11 @@ public class PlayerAttack : MonoBehaviour
 
     void WeaponShoot()
     {
-        if(weapon_Manager.GetCurrentSelectedWeapon().fireType == WeaponFireType.MULTIPLE)
+        if (weapon_Manager.GetCurrentSelectedWeapon().fireType == WeaponFireType.MULTIPLE)
         {
             if(Input.GetMouseButton(0) && Time.time > nextTimeToFire)
             {
+                BulletFired();
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
@@ -62,15 +64,15 @@ public class PlayerAttack : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0))
             {
-                if(weapon_Manager.GetCurrentSelectedWeapon().tag == Tags.AXE_TAG) {
+                if (weapon_Manager.GetCurrentSelectedWeapon().tag == Tags.AXE_TAG) {
                     weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
                 }
 
                 if(weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.BULLET)
                 {
+                    BulletFired();
                     weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
 
-                    //BulletFired();
                 }
                 
             }
@@ -110,6 +112,18 @@ public class PlayerAttack : MonoBehaviour
                 is_Aiming = false;
 
             }
+        }
+    }
+
+    void BulletFired()
+    {
+        RaycastHit hit;
+
+        print("BulletFired is being called");
+
+        if (Physics.Raycast(mainCam.transform.position, mainCam.transform.forward, out hit))
+        {
+            print("WE HIT: " + hit.transform.gameObject.name);
         }
     }
 }
