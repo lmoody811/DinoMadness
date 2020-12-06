@@ -483,6 +483,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &901400269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901400271}
+  - component: {fileID: 901400270}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &901400270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901400269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7dfff609dc3a5243a420f8b6af7b81a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!4 &901400271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901400269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2066899534}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &968639968
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +870,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 36844559}
+--- !u!114 &1671642923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671642916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b3c98b0d17fe04a95bdd66cbd7af0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  is_Player: 1
+  is_Cannibal: 0
+  damage: 10
+--- !u!65 &1671642924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671642916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 4, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1773850707
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +965,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2066899534 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2536239983430326083, guid: 583b7d5b28c77f24f833923ec7d3e8cb, type: 3}
+  m_PrefabInstance: {fileID: 8471251645269434977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4216991219474099157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -984,6 +1065,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9145732448375133081, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
 --- !u!1 &6250264758906005778 stripped
@@ -1003,6 +1088,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9abcbffeb8d5e444807bf599be79295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6250264758906005785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250264758906005778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b3c98b0d17fe04a95bdd66cbd7af0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  is_Player: 0
+  is_Cannibal: 1
+  damage: 10
 --- !u!114 &6250264758906005787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,6 +1125,8 @@ MonoBehaviour:
   patrol_Radius_Max: 60
   patrol_For_This_Time: 15
   wait_Before_Attack: 2
+  attack_Point: {fileID: 901400269}
+  damage: 10
 --- !u!1001 &8471251645269434977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1078,6 +1181,18 @@ PrefabInstance:
     - target: {fileID: 2536239983430617971, guid: 583b7d5b28c77f24f833923ec7d3e8cb, type: 3}
       propertyPath: m_Name
       value: Cannibal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536239983430617971, guid: 583b7d5b28c77f24f833923ec7d3e8cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536239983430617971, guid: 583b7d5b28c77f24f833923ec7d3e8cb, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536239983430617981, guid: 583b7d5b28c77f24f833923ec7d3e8cb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8439433141811023018, guid: 583b7d5b28c77f24f833923ec7d3e8cb, type: 3}
       propertyPath: m_IsKinematic

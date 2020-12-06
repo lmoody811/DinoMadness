@@ -40,6 +40,10 @@ public class EnemyController : MonoBehaviour
     private float attack_Timer;
 
     private Transform target;
+
+    public GameObject attack_Point;
+
+    public float damage = 10f;
     // Start is called before the first frame update
 
     void Awake()
@@ -194,5 +198,26 @@ public class EnemyController : MonoBehaviour
         navAgent.SetDestination(navHit.position);
 
         
+    }
+
+    public EnemyState Enemy_State
+    {
+        get
+        {
+            return enemy_State;
+        }
+        set
+        {
+            enemy_State = value;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Player")
+        {
+            print("Hit Player");
+            other.GetComponent<HealthScript>().ApplyDamage(damage);
+        }
     }
 }
