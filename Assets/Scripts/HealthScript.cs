@@ -41,7 +41,6 @@ public class HealthScript : MonoBehaviour
             return;
         }
         health -= damage;
-        print("Health: " + health);
 
         if (is_Player)
         {
