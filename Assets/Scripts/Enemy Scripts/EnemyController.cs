@@ -181,7 +181,7 @@ public class EnemyController : MonoBehaviour
             enemy_Anim.Attack();
             attack_Timer = 0f;
 
-            enemy_Audio.Play_AttackSound();
+            //enemy_Audio.Play_AttackSound();
         }
 
         if(Vector3.Distance(transform.position, target.position) > attack_Distance + chase_After_Attack_Distance)
@@ -222,7 +222,7 @@ public class EnemyController : MonoBehaviour
     {
         if(other.name == "Player")
         {
-            print("Hit Player");
+            enemy_Audio.Play_AttackSound();
             other.GetComponent<HealthScript>().ApplyDamage(damage);
         }
     }
