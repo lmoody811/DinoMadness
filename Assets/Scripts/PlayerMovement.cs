@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MoveThePlayer();
+
+  
     }
 
     void MoveThePlayer()

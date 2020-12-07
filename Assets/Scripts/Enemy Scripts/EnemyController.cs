@@ -46,6 +46,8 @@ public class EnemyController : MonoBehaviour
     public float damage = 10f;
 
     private EnemyAudio enemy_Audio;
+
+    public Camera FPCamera;
     // Start is called before the first frame update
 
     void Awake()
@@ -132,17 +134,18 @@ public class EnemyController : MonoBehaviour
 
         if (navAgent.velocity.sqrMagnitude > 0)
         {
-            enemy_Anim.Run(true);
+            //transform.LookAt(FPCamera.transform);
+            enemy_Anim.Walk(true);
         }
         else
         {
-            enemy_Anim.Run(false);
+            enemy_Anim.Walk(false);
 
         }
 
         if(Vector3.Distance(transform.position, target.position) <= attack_Distance)
         {
-            enemy_Anim.Run(false);
+            //enemy_Anim.Run(false);
             enemy_Anim.Walk(false);
             enemy_State = EnemyState.ATTACK;
 
@@ -153,7 +156,8 @@ public class EnemyController : MonoBehaviour
             else if(Vector3.Distance(transform.position, target.position) > chase_Distance)
             {
                 //player run away from enemy, stop running
-                enemy_Anim.Run(false);
+                //enemy_Anim.Run(false);
+                enemy_Anim.Walk(false);
 
                 enemy_State = EnemyState.PATROL;
 
@@ -222,7 +226,9 @@ public class EnemyController : MonoBehaviour
     {
         if(other.name == "Player")
         {
+            enemy_Anim.Attack();
             enemy_Audio.Play_AttackSound();
+
             other.GetComponent<HealthScript>().ApplyDamage(damage);
         }
     }

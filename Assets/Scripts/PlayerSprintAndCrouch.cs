@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSprintAndCrouch : MonoBehaviour
 {
@@ -68,6 +69,10 @@ public class PlayerSprintAndCrouch : MonoBehaviour
     {
         Sprint();
         Crouch();
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            SceneManager.LoadScene("Level1");
+        }
     }
 
     void Sprint()
