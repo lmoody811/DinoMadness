@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public enum EnemyState
 {
-    PATROL, 
+    PATROL,
     CHASE,
     ATTACK
 }
@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour
 
         if(Vector3.Distance(transform.position, target.position) <= chase_Distance)
         {
-            
+
             enemy_Anim.Walk(false);
             enemy_State = EnemyState.CHASE;
 
@@ -134,9 +134,9 @@ public class EnemyController : MonoBehaviour
         //set the player's position as the destination because we are chasing the player
         navAgent.SetDestination(target.position);
 
-        print("Dino thinks I'm here: " + target.position);
+        //print("Dino thinks I'm here: " + target.position);
 
-        
+
 
         if (navAgent.velocity.sqrMagnitude > 0)
         {
@@ -185,13 +185,13 @@ public class EnemyController : MonoBehaviour
         navAgent.isStopped = true;
 
         attack_Timer += Time.deltaTime;
+        //enemy_Audio.Play_AttackSound();
 
         if(attack_Timer > wait_Before_Attack)
         {
             enemy_Anim.Attack();
             attack_Timer = 0f;
 
-            //enemy_Audio.Play_AttackSound();
         }
 
         if(Vector3.Distance(transform.position, target.position) > attack_Distance + chase_After_Attack_Distance)
@@ -212,7 +212,7 @@ public class EnemyController : MonoBehaviour
         NavMesh.SamplePosition(randDir, out navHit, rand_Radius, -1);
 
         navAgent.SetDestination(navHit.position);*/
-        
+
     }
 
     public EnemyState Enemy_State
@@ -231,8 +231,8 @@ public class EnemyController : MonoBehaviour
     {
         if(other.name == "Player")
         {
+            //enemy_Audio.Play_AttackSound();
             enemy_Anim.Attack();
-            enemy_Audio.Play_AttackSound();
 
             other.GetComponent<HealthScript>().ApplyDamage(damage);
         }

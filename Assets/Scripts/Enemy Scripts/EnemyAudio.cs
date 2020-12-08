@@ -28,6 +28,7 @@ public class EnemyAudio : MonoBehaviour
     public void Play_AttackSound()
     {
         audioSource.clip = attack_Clips[Random.Range(0, attack_Clips.Length)];
+        audioSource.Play();
     }
-    
+
 }

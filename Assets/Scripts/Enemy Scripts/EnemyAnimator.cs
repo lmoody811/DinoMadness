@@ -7,6 +7,8 @@ public class EnemyAnimator : MonoBehaviour
 
     private Animator anim;
 
+    private 
+
     void Awake()
     {
         anim = GetComponent<Animator>();

@@ -19,6 +19,8 @@ public class HealthScript : MonoBehaviour
 
     private PlayerStats player_Stats;
 
+    public AudioSource die_Sound;
+
     void Awake()
     {
         if(is_Cannibal)
@@ -42,6 +44,9 @@ public class HealthScript : MonoBehaviour
         {
             return;
         }
+
+        die_Sound.Play();
+
         health -= damage;
 
         if (is_Player)
@@ -117,4 +122,5 @@ public class HealthScript : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackScript : MonoBehaviour
 {
-    
+
 
     public float radius = 1f;
 
@@ -15,7 +15,7 @@ public class AttackScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class AttackScript : MonoBehaviour
     {
         /*Collider[] hits = Physics.OverlapSphere(transform.position, radius, layerMask);
 
-       
+
         if (hits.Length > 0)
         {
             hits[0].gameObject.GetComponent<HealthScript>().ApplyDamage(damage);
