@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class HealthScript : MonoBehaviour
 {
@@ -20,9 +21,11 @@ public class HealthScript : MonoBehaviour
     private PlayerStats player_Stats;
 
     public AudioSource die_Sound;
+    public TextMeshProUGUI die_Text;
 
     void Awake()
     {
+        die_Text.text = "";
         if(is_Cannibal)
         {
             enemy_Anim = GetComponent<EnemyAnimator>();
@@ -104,6 +107,7 @@ public class HealthScript : MonoBehaviour
 
         if(tag == Tags.PLAYER_TAG)
         {
+            die_Text.text = "You died.";
             Invoke("RestartGame", 3f);
         }
         else
@@ -115,7 +119,7 @@ public class HealthScript : MonoBehaviour
 
     void RestartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
     
     void TurnOffGameObject()

@@ -17,6 +17,8 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         showMenu();
     }
     // Start is called before the first frame update
