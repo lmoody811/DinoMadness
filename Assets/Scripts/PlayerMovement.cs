@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         ApplyGravity();
 
         character_Controller.Move(move_Direction);
+
     }
 
     void ApplyGravity()

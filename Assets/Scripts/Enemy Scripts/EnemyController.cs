@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
 
     void Awake()
     {
+
         enemy_Anim = GetComponent<EnemyAnimator>();
         navAgent = GetComponent<NavMeshAgent>();
 
@@ -115,6 +116,7 @@ public class EnemyController : MonoBehaviour
 
         if(Vector3.Distance(transform.position, target.position) <= chase_Distance)
         {
+            
             enemy_Anim.Walk(false);
             enemy_State = EnemyState.CHASE;
 
@@ -132,20 +134,24 @@ public class EnemyController : MonoBehaviour
         //set the player's position as the destination because we are chasing the player
         navAgent.SetDestination(target.position);
 
+        print("Dino thinks I'm here: " + target.position);
+
+        
+
         if (navAgent.velocity.sqrMagnitude > 0)
         {
             //transform.LookAt(FPCamera.transform);
-            enemy_Anim.Walk(true);
+            enemy_Anim.Run(true);
         }
         else
         {
-            enemy_Anim.Walk(false);
+            enemy_Anim.Run(false);
 
         }
 
         if(Vector3.Distance(transform.position, target.position) <= attack_Distance)
         {
-            //enemy_Anim.Run(false);
+            enemy_Anim.Run(false);
             enemy_Anim.Walk(false);
             enemy_State = EnemyState.ATTACK;
 
@@ -156,7 +162,7 @@ public class EnemyController : MonoBehaviour
             else if(Vector3.Distance(transform.position, target.position) > chase_Distance)
             {
                 //player run away from enemy, stop running
-                //enemy_Anim.Run(false);
+                enemy_Anim.Run(false);
                 enemy_Anim.Walk(false);
 
                 enemy_State = EnemyState.PATROL;
@@ -196,7 +202,7 @@ public class EnemyController : MonoBehaviour
 
     void SetNewRandomDestination()
     {
-        float rand_Radius = Random.Range(patrol_Radius_Min, patrol_Radius_Max);
+        /*float rand_Radius = Random.Range(patrol_Radius_Min, patrol_Radius_Max);
         Vector3 randDir = Random.insideUnitSphere * rand_Radius;
 
         randDir += transform.position;
@@ -205,8 +211,7 @@ public class EnemyController : MonoBehaviour
 
         NavMesh.SamplePosition(randDir, out navHit, rand_Radius, -1);
 
-        navAgent.SetDestination(navHit.position);
-
+        navAgent.SetDestination(navHit.position);*/
         
     }
 
