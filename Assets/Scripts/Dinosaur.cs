@@ -11,6 +11,7 @@ public class Dinosaur : MonoBehaviour
     static public int collected_Dinos;
     public GameObject dino_statue;
     private int num_Dinos;
+    public AudioSource collected_Sound;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +53,7 @@ public class Dinosaur : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
+            collected_Sound.Play();
             dino_statue.SetActive(true);
             collected_Dinos++;
             updateDinoText();

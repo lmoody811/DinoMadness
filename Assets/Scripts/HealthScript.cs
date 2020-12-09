@@ -11,6 +11,7 @@ public class HealthScript : MonoBehaviour
     private EnemyController enemy_Controller;
 
     public float health = 100f;
+    public float initial_health = 100f;
 
     public bool is_Player, is_Cannibal;
 
@@ -125,6 +126,30 @@ public class HealthScript : MonoBehaviour
     void TurnOffGameObject()
     {
         gameObject.SetActive(false);
+    }
+
+    public bool addHealth(float heal)
+    {
+        bool playerHealed = false;
+        if(health == 100f)
+        {
+            //don't do anything
+        }
+        else
+        {
+            if ((health + heal) >= initial_health)
+            {
+                health = 100f;
+            }
+            else
+            {
+                health += heal;
+                playerHealed = true;
+            }
+            player_Stats.Display_HealthStats(health);
+        }
+        return playerHealed;
+
     }
 
 }
