@@ -11,6 +11,7 @@ public class Dinosaur : MonoBehaviour
     static public int collected_Dinos;
     public GameObject dino_statue;
     private int num_Dinos;
+    static public int level;
     public AudioSource collected_Sound;
 
     // Start is called before the first frame update
@@ -20,13 +21,16 @@ public class Dinosaur : MonoBehaviour
         string level_Name = SceneManager.GetActiveScene().name;
 
         switch(level_Name){ 
-            case "Level1": 
+            case "Level1":
+                level = 1;
                 num_Dinos = 6;
                 break;
-            case "Level2": 
+            case "Level2":
+                level = 2;
                 num_Dinos = 6;
                 break;
-            case "Level3": 
+            case "Level3":
+                level = 3;
                 num_Dinos = 10;
                 break;
         }

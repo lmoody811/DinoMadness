@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -22,6 +24,13 @@ public class PlayerAttack : MonoBehaviour
 
     private bool is_Aiming;
 
+    public AudioSource button_Sound;
+
+    private bool button_Hit = false;
+
+
+
+
 
 
     void Awake()
@@ -34,6 +43,7 @@ public class PlayerAttack : MonoBehaviour
         crosshair = GameObject.FindWithTag(Tags.CROSSHAIR);
 
         mainCam = Camera.main;
+
     }
     // Start is called before the first frame update
     void Start()
@@ -128,6 +138,29 @@ public class PlayerAttack : MonoBehaviour
                 hit.transform.GetComponent<HealthScript>().ApplyDamage(damage);
 
             }
+
+            if(hit.transform.tag == Tags.BUTTON_TAG && button_Hit == false)
+            {
+                button_Sound.Play();
+                Invoke("GoToNextLevel", 2.0f);
+                button_Hit = true;
+            }
+        }
+    }
+
+    void GoToNextLevel()
+    {
+        if(Dinosaur.level == 1)
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        else if(Dinosaur.level == 2)
+        {
+            //SceneManager.LoadScene("Level3");
+        }
+        else if(Dinosaur.level == 3)
+        {
+            //Player won game
         }
     }
 }

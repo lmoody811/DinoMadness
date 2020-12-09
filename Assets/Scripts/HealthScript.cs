@@ -22,13 +22,17 @@ public class HealthScript : MonoBehaviour
     private PlayerStats player_Stats;
 
     public AudioSource die_Sound;
-    public TextMeshProUGUI die_Text;
     public AudioSource health_Sound;
+
+    public TextMeshProUGUI die_Text;
+   
 
     void Awake()
     {
+
         die_Text.text = "";
-        if(is_Cannibal)
+
+        if (is_Cannibal)
         {
             enemy_Anim = GetComponent<EnemyAnimator>();
             enemy_Controller = GetComponent<EnemyController>();
@@ -43,36 +47,61 @@ public class HealthScript : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(float damage)
+
+    string getLevelText()
     {
-        if (is_Dead)
+        int curLevel = Dinosaur.level;
+        string levelText = "";
+
+        switch(curLevel)
         {
-            return;
+            case 1:
+                levelText = "Level 1: Triassic Period";
+                break;
+            case 2:
+                levelText = "Level 2: Jurassic Period";
+                break;
+            case 3:
+                levelText = "Level 3: Cretaceous Period";
+                break;
         }
+        return levelText;
 
-        die_Sound.Play();
+    }
 
-        health -= damage;
 
-        if (is_Player)
+
+
+    public void ApplyDamage(float damage)
         {
-            player_Stats.Display_HealthStats(health);
-        }
-        if(is_Cannibal)
-        {
-            if(enemy_Controller.Enemy_State == EnemyState.PATROL)
+            if (is_Dead)
             {
-                enemy_Controller.chase_Distance = 50f;
+                return;
+            }
+
+            die_Sound.Play();
+
+            health -= damage;
+
+            if (is_Player)
+            {
+                player_Stats.Display_HealthStats(health);
+            }
+            if(is_Cannibal)
+            {
+                if(enemy_Controller.Enemy_State == EnemyState.PATROL)
+                {
+                    enemy_Controller.chase_Distance = 50f;
+                }
+            }
+
+            if(health <= 0f)
+            {
+                PlayerDied();
+
+                is_Dead = true;
             }
         }
-
-        if(health <= 0f)
-        {
-            PlayerDied();
-
-            is_Dead = true;
-        }
-    }
 
     void PlayerDied()
     {
