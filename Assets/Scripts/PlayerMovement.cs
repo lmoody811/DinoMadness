@@ -11,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 move_Direction;
 
+    public float normalSpeed = 5f;
     public float speed = 5f;
+    private float normalGravity = 20f;
     private float gravity = 20f;
 
     public float jump_Force = 10f;
@@ -29,9 +31,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ApplyCheats();
         MoveThePlayer();
-
-  
     }
 
     void MoveThePlayer()
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     void ApplyGravity()
     {
-        if(character_Controller.isGrounded)
+        if (character_Controller.isGrounded)
         {
             vertical_Velocity -= gravity * Time.deltaTime;
 
@@ -65,14 +66,77 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerJump()
     {
-        if(character_Controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (character_Controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             vertical_Velocity = jump_Force;
         }
     }
 
+    void ApplyCheats()
+    {
+        LowGravity();
+        DoubleSpeed();
+        QuadSpeed();
+        OctaSpeed();
+    }
 
+    void LowGravity()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            if (gravity == normalGravity / 4)
+            {
+                gravity = normalGravity;
+            }
+            else
+            {
+                gravity = normalGravity / 4;
+            }
+        }
+    }
 
+    void DoubleSpeed()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            if (speed == 2 * normalSpeed)
+            {
+                speed = normalSpeed;
+            }
+            else
+            {
+                speed = 2 * normalSpeed;
+            }
+        }
+    }
 
+    void QuadSpeed()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            if (speed == 4 * normalSpeed)
+            {
+                speed = normalSpeed;
+            }
+            else
+            {
+                speed = 4 * normalSpeed;
+            }
+        }
+    }
+
+    void OctaSpeed()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if (speed == 8 * normalSpeed)
+            {
+                speed = normalSpeed;
+            }
+            else
+            {
+                speed = 8 * normalSpeed;
+            }
+        }
+    }
 }
-

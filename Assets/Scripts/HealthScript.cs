@@ -17,6 +17,8 @@ public class HealthScript : MonoBehaviour
 
     private bool is_Dead;
 
+    private bool unlimitedHealth = false;
+    private static bool maxDamage = false;
     public float damage = 10f;
 
     private PlayerStats player_Stats;
@@ -25,7 +27,7 @@ public class HealthScript : MonoBehaviour
     public AudioSource health_Sound;
 
     public TextMeshProUGUI die_Text;
-   
+
 
     void Awake()
     {
@@ -41,7 +43,7 @@ public class HealthScript : MonoBehaviour
             //get enemy audio
         }
 
-        if(is_Player)
+        if (is_Player)
         {
             player_Stats = GetComponent<PlayerStats>();
         }
@@ -53,7 +55,7 @@ public class HealthScript : MonoBehaviour
         int curLevel = Dinosaur.level;
         string levelText = "";
 
-        switch(curLevel)
+        switch (curLevel)
         {
             case 1:
                 levelText = "Level 1: Triassic Period";
@@ -69,43 +71,44 @@ public class HealthScript : MonoBehaviour
 
     }
 
-
-
-
     public void ApplyDamage(float damage)
+    {
+        if (is_Dead)
         {
-            if (is_Dead)
-            {
-                return;
-            }
+            return;
+        }
 
-            die_Sound.Play();
+        die_Sound.Play();
 
+        if (!unlimitedHealth)
             health -= damage;
 
-            if (is_Player)
-            {
-                player_Stats.Display_HealthStats(health);
-            }
-            if(is_Cannibal)
-            {
-                if(enemy_Controller.Enemy_State == EnemyState.PATROL)
-                {
-                    enemy_Controller.chase_Distance = 50f;
-                }
-            }
+        if (is_Cannibal && maxDamage)
+            health = 0;
 
-            if(health <= 0f)
+        if (is_Player)
+        {
+            player_Stats.Display_HealthStats(health);
+        }
+        if (is_Cannibal)
+        {
+            if (enemy_Controller.Enemy_State == EnemyState.PATROL)
             {
-                PlayerDied();
-
-                is_Dead = true;
+                enemy_Controller.chase_Distance = 50f;
             }
         }
 
+        if (health <= 0f)
+        {
+            PlayerDied();
+
+            is_Dead = true;
+        }
+    }
+
     void PlayerDied()
     {
-        if(is_Cannibal)
+        if (is_Cannibal)
         {
             GetComponent<Animator>().enabled = false;
             GetComponent<BoxCollider>().isTrigger = false;
@@ -122,10 +125,10 @@ public class HealthScript : MonoBehaviour
             //EnemyManager.instance.EnemyDied(true);
         }
 
-        if(is_Player)
+        if (is_Player)
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag(Tags.ENEMY_TAG);
-            for(int i = 0; i < enemies.Length; i++)
+            for (int i = 0; i < enemies.Length; i++)
             {
                 enemies[i].GetComponent<EnemyController>().enabled = false;
             }
@@ -138,7 +141,7 @@ public class HealthScript : MonoBehaviour
 
         }
 
-        if(tag == Tags.PLAYER_TAG)
+        if (tag == Tags.PLAYER_TAG)
         {
             die_Text.text = "You died.";
             Invoke("RestartGame", 3f);
@@ -154,7 +157,7 @@ public class HealthScript : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
-    
+
     void TurnOffGameObject()
     {
         gameObject.SetActive(false);
@@ -163,7 +166,7 @@ public class HealthScript : MonoBehaviour
     public bool addHealth(float heal)
     {
         bool playerHealed = false;
-        if(health == 100f)
+        if (health == 100f)
         {
             //don't do anything
         }
@@ -186,4 +189,32 @@ public class HealthScript : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        ApplyCheats();
+    }
+
+    void ApplyCheats()
+    {
+        MaxDamage();
+        UnlimitedHealth();
+    }
+
+    void MaxDamage()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha5) && is_Player)
+        {
+            maxDamage = !maxDamage;
+        }
+    }
+
+    void UnlimitedHealth()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha6) && is_Player)
+        {
+            health = initial_health;
+            player_Stats?.Display_HealthStats(health);
+            unlimitedHealth = !unlimitedHealth;
+        }
+    }
 }

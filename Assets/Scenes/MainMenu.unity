@@ -1639,7 +1639,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Goal description coming soon!
+  m_text: 'The following cheats are available:
+
+    5 -- Max Damage
+
+    6 -- Unlimited
+    Health
+
+    7 -- Low Gravity
+
+    8 -- 2x Speed
+
+    9 -- 4x Speed
+
+    0 --
+    8x Speed'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4282c0f9744b6984db4725b902f27475, type: 2}
   m_sharedMaterial: {fileID: -3635113652624714823, guid: 4282c0f9744b6984db4725b902f27475, type: 2}
