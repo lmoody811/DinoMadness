@@ -207,7 +207,7 @@ public class EnemyController : MonoBehaviour
 
     void SetNewRandomDestination()
     {
-        /*float rand_Radius = Random.Range(patrol_Radius_Min, patrol_Radius_Max);
+        float rand_Radius = Random.Range(patrol_Radius_Min, patrol_Radius_Max);
         Vector3 randDir = Random.insideUnitSphere * rand_Radius;
 
         randDir += transform.position;
@@ -216,7 +216,7 @@ public class EnemyController : MonoBehaviour
 
         NavMesh.SamplePosition(randDir, out navHit, rand_Radius, -1);
 
-        navAgent.SetDestination(navHit.position);*/
+        navAgent.SetDestination(navHit.position);
 
     }
 
