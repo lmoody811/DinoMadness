@@ -200,6 +200,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        enemy_Anim.Death();
+    }
+
     void SetNewRandomDestination()
     {
         /*float rand_Radius = Random.Range(patrol_Radius_Min, patrol_Radius_Max);

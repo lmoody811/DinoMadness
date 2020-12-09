@@ -23,6 +23,7 @@ public class HealthScript : MonoBehaviour
 
     public AudioSource die_Sound;
     public TextMeshProUGUI die_Text;
+    public AudioSource health_Sound;
 
     void Awake()
     {
@@ -81,6 +82,8 @@ public class HealthScript : MonoBehaviour
             GetComponent<BoxCollider>().isTrigger = false;
             GetComponent<Rigidbody>().AddTorque(-transform.forward * 50f);
 
+            GetComponent<EnemyController>().Die();
+
             enemy_Controller.enabled = false;
             navAgent.enabled = false;
             enemy_Anim.enabled = false;
@@ -137,9 +140,11 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
+            health_Sound.Play();
             if ((health + heal) >= initial_health)
             {
                 health = 100f;
+                playerHealed = true;
             }
             else
             {

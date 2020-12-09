@@ -29,10 +29,11 @@ public class EnemyAnimator : MonoBehaviour
         anim.SetTrigger(AnimationTags.ATTACK_TRIGGER);
     }
 
-    public void Dead()
+    public void Death()
     {
-        anim.SetTrigger(AnimationTags.DEAD_TRIGGER);
+        anim.SetTrigger(AnimationTags.DEATH_TRIGGER);
     }
+
     // Start is called before the first frame update
     void Start()
     {
