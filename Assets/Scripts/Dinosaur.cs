@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 public class Dinosaur : MonoBehaviour
 {
     public TextMeshProUGUI dinos_Text;
-    private int collected_Dinos;
+    public TextMeshProUGUI dino_Name;
+    static public int collected_Dinos;
+    public GameObject dino_statue;
     private int num_Dinos;
 
     // Start is called before the first frame update
     void Start()
     {
+        dino_statue.SetActive(false);
         string level_Name = SceneManager.GetActiveScene().name;
 
         switch(level_Name){ 
@@ -27,6 +30,7 @@ public class Dinosaur : MonoBehaviour
                 break;
         }
         collected_Dinos = 0;
+        dino_Name.text = "";
         updateDinoText();
     }
 
@@ -35,6 +39,7 @@ public class Dinosaur : MonoBehaviour
     {
         if(collected_Dinos == num_Dinos) { 
             //go to next level
+            //start timer
         }
     }
 
@@ -47,10 +52,18 @@ public class Dinosaur : MonoBehaviour
     {
         if(other.gameObject.name == "Player")
         {
+            dino_statue.SetActive(true);
             collected_Dinos++;
             updateDinoText();
-            gameObject.SetActive(false);
+            dino_Name.text = "Collected: " + gameObject.name;
+            Invoke("deactivateDino", 3.0f);
         }
+    }
+
+    void deactivateDino()
+    {
+        dino_Name.text = "";
+        gameObject.SetActive(false);
     }
 
     
