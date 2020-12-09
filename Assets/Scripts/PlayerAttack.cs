@@ -156,7 +156,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if(Dinosaur.level == 2)
         {
-            //SceneManager.LoadScene("Level3");
+            SceneManager.LoadScene("Level3");
         }
         else if(Dinosaur.level == 3)
         {

@@ -38,6 +38,8 @@ public class PlayerSprintAndCrouch : MonoBehaviour
     private float sprint_Value = 100f;
     public float sprint_Threshold = 10f;
 
+    private int level;
+
 
 
 
@@ -52,6 +54,18 @@ public class PlayerSprintAndCrouch : MonoBehaviour
         player_Footsteps = GetComponentInChildren<PlayerFootsteps>();
 
         player_Stats = GetComponent<PlayerStats>();
+
+        string level_name = SceneManager.GetActiveScene().name;
+
+        if(level_name == "Level1") { 
+            level = 1;
+        }
+        else if(level_name == "Level2") { 
+            level = 2;
+        }
+        else if(level_name == "Level3") { 
+            level = 3;
+        }
     }
 
 
@@ -71,7 +85,17 @@ public class PlayerSprintAndCrouch : MonoBehaviour
         Crouch();
 
         if (Input.GetKeyDown(KeyCode.R)) {
-            SceneManager.LoadScene("Level1");
+            switch(level) { 
+                case 1: 
+                    SceneManager.LoadScene("Level1");
+                    break;
+                case 2: 
+                    SceneManager.LoadScene("Level2");
+                    break;
+                case 3: 
+                    SceneManager.LoadScene("Level3");
+                    break;
+            }
         }
     }
 
