@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
-{
+public class EnemyManager : MonoBehaviour {
+
     public static EnemyManager instance;
 
     [SerializeField]
@@ -17,74 +17,77 @@ public class EnemyManager : MonoBehaviour
     private int initial_Cannibal_Count;
 
     public float wait_Before_Spawn_Enemies_Time = 10f;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        MakeInstance();
-    }
 
-    void Start()
-    {
+    // Use this for initialization
+    void Awake () {
+        MakeInstance();
+	}
+
+    void Start() {
         initial_Cannibal_Count = cannibal_Enemy_Count;
 
-        SpawnCannibals();
+        SpawnEnemies();
 
         StartCoroutine("CheckToSpawnEnemies");
     }
 
-    void MakeInstance()
-    {
-        if(instance == null)
-        {
+    void MakeInstance() {
+        if(instance == null) {
             instance = this;
         }
     }
 
+    void SpawnEnemies() {
+        SpawnCannibals();
+    }
 
-    void SpawnCannibals()
-    {
+    void SpawnCannibals() {
+
         int index = 0;
 
-        for(int i = 0; i < cannibal_Enemy_Count; i++)
-        {
-            if(index >= cannibal_SpawnPoints.Length)
-            {
+        for (int i = 0; i < cannibal_Enemy_Count; i++) {
+
+            if (index >= cannibal_SpawnPoints.Length) {
                 index = 0;
             }
-
 
             Instantiate(cannibal_Prefab, cannibal_SpawnPoints[index].position, Quaternion.identity);
 
             index++;
+
         }
 
         cannibal_Enemy_Count = 0;
+
     }
 
 
-    IEnumerator CheckToSpawnEnemies()
-    {
+    IEnumerator CheckToSpawnEnemies() {
         yield return new WaitForSeconds(wait_Before_Spawn_Enemies_Time);
 
         SpawnCannibals();
 
+
         StartCoroutine("CheckToSpawnEnemies");
+
     }
-    public void EnemyDied(bool cannibal)
-    {
-        if(cannibal)
-        {
+
+    public void EnemyDied(bool cannibal) {
+
+        if(cannibal) {
+
             cannibal_Enemy_Count++;
 
-            if(cannibal_Enemy_Count > initial_Cannibal_Count)
-            {
+            if(cannibal_Enemy_Count > initial_Cannibal_Count) {
                 cannibal_Enemy_Count = initial_Cannibal_Count;
             }
-        }
+
+        } 
+
     }
 
-    public void StopSpawning()
-    {
+    public void StopSpawning() {
         StopCoroutine("CheckToSpawnEnemies");
     }
-}
+
+} // class
