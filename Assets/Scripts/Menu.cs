@@ -20,6 +20,8 @@ public class Menu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         showMenu();
+
+        PlayerPrefs.SetInt("totalCollected", 0);
     }
     // Start is called before the first frame update
     public void startGame()

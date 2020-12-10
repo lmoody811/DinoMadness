@@ -28,6 +28,8 @@ public class PlayerAttack : MonoBehaviour
 
     private bool button_Hit = false;
 
+    public TextMeshProUGUI win_Text;
+
 
 
 
@@ -35,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Awake()
     {
+        win_Text.text = "";
         weapon_Manager = GetComponent<WeaponManager>();
 
         Transform root = transform.Find("LookRoot");
@@ -48,7 +51,9 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!PlayerPrefs.HasKey("totalCollected")) { 
+            PlayerPrefs.SetInt("totalCollected", 0);
+        }
     }
 
     // Update is called once per frame
@@ -142,8 +147,16 @@ public class PlayerAttack : MonoBehaviour
             if(hit.transform.tag == Tags.BUTTON_TAG && button_Hit == false)
             {
                 button_Sound.Play();
-                Invoke("GoToNextLevel", 2.0f);
+                print("Collected:" + Dinosaur.collected_Dinos);
+                int total_Collected_Dinos = PlayerPrefs.GetInt("totalCollected") + Dinosaur.collected_Dinos;
+                PlayerPrefs.SetInt("totalCollected", total_Collected_Dinos);
                 button_Hit = true;
+                if(Dinosaur.level == 3) { 
+                    playerWon();
+                }
+                else { 
+                    Invoke("GoToNextLevel", 2.0f);
+                }
             }
         }
     }
@@ -162,5 +175,36 @@ public class PlayerAttack : MonoBehaviour
         {
             //Player won game
         }
+    }
+
+    void playerWon() { 
+        StartCoroutine(ShowWinningMessage(7));
+    }
+
+    IEnumerator ShowWinningMessage(float delay) { 
+        win_Text.text = getScore();
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    string getScore() { 
+        int total_Collected_Dinos = PlayerPrefs.GetInt("totalCollected");
+        print(total_Collected_Dinos);
+        string winningText = "";
+
+        if(total_Collected_Dinos <= 15 && total_Collected_Dinos >= 13) { 
+            winningText = "Congrats! You collected " + total_Collected_Dinos + " dinosaurs. You made it out by the skin of your teeth. Hopefully you survive your injuries.";
+        }
+        else if(total_Collected_Dinos == 20) { 
+            winningText = "Congrats! You collected " + total_Collected_Dinos + " dinosaurs. You made it out with all of the dinosaur DNA! Good luck selling these and making a fortune.";
+        }
+        else if(total_Collected_Dinos <= 19 && total_Collected_Dinos >= 16) { 
+            winningText = "Congrats! You collected " + total_Collected_Dinos + " dinosaurs. You survived the island. Stand by for your next mission.";
+        }
+        else if(total_Collected_Dinos <= 13) { 
+            winningText = "You collected " + total_Collected_Dinos + " dinosaurs. You did not collect enough DNA. You are stuck on the island forever. Good luck with that.";
+        }
+
+        return winningText;
     }
 }
