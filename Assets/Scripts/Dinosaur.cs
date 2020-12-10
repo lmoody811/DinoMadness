@@ -44,8 +44,7 @@ public class Dinosaur : MonoBehaviour
     void Update()
     {
         if(collected_Dinos == num_Dinos) { 
-            //go to next level
-            //start timer
+            PlayerStats.showMessage = true;
         }
     }
 
