@@ -2563,7 +2563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 207848628}
   m_Layer: 0
-  m_Name: T-rex Spawn Points
+  m_Name: Dragon Spawn Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11882,7 +11882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5315049fe6d35df4ca84408a509ad363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cannibal_Prefab: {fileID: 5738129680693485482, guid: db8dcbe5ec5e649849d7936cade4ec33, type: 3}
+  cannibal_Prefab: {fileID: 5073691570068980758, guid: 36c23106755754dcfae8c4c74586c01e, type: 3}
   cannibal_SpawnPoints:
   - {fileID: 952344148}
   - {fileID: 931856175}
@@ -21591,7 +21591,7 @@ MonoBehaviour:
   health: 100
   initial_health: 100
   is_Player: 1
-  is_Cannibal: 0
+  is_Dragon: 0
   damage: 10
   die_Sound: {fileID: 1671642922}
   health_Sound: {fileID: 1671642927}
@@ -27901,7 +27901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9145732448375133081, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9145732448375133081, guid: ae82f4a606cdab740a3a0dd1f023e961, type: 3}
       propertyPath: m_Icon

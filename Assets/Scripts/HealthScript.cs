@@ -13,7 +13,7 @@ public class HealthScript : MonoBehaviour
     public float health = 100f;
     public float initial_health = 100f;
 
-    public bool is_Player, is_Cannibal;
+    public bool is_Player, is_Dragon;
 
     private bool is_Dead;
 
@@ -35,7 +35,7 @@ public class HealthScript : MonoBehaviour
             die_Text.text = "";
         }
 
-        if (is_Cannibal)
+        if (is_Dragon)
         {
             enemy_Anim = GetComponent<EnemyAnimator>();
             enemy_Controller = GetComponent<EnemyController>();
@@ -79,19 +79,20 @@ public class HealthScript : MonoBehaviour
             return;
         }
 
+
         die_Sound.Play();
 
         if (!unlimitedHealth)
             health -= damage;
 
-        if (is_Cannibal && maxDamage)
+        if (is_Dragon && maxDamage)
             health = 0;
 
         if (is_Player)
         {
             player_Stats.Display_HealthStats(health);
         }
-        if (is_Cannibal)
+        if (is_Dragon)
         {
             if (enemy_Controller.Enemy_State == EnemyState.PATROL)
             {
@@ -109,11 +110,11 @@ public class HealthScript : MonoBehaviour
 
     void PlayerDied()
     {
-        if (is_Cannibal)
+        if (is_Dragon)
         {
             GetComponent<Animator>().enabled = false;
             GetComponent<BoxCollider>().isTrigger = false;
-            GetComponent<Rigidbody>().AddTorque(-transform.forward * 50f);
+            //GetComponent<Rigidbody>().AddTorque(-transform.forward * 50f);
 
             GetComponent<EnemyController>().Die();
 
