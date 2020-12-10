@@ -1968,7 +1968,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5eb4e4c4d0b3c8f4bb02a762ec01f6b4, type: 3}
   m_Controller: {fileID: 9100000, guid: 98b995823629c0740beec1a041a670c6, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
@@ -2024,7 +2024,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.84
-  m_BaseOffset: 0
+  m_BaseOffset: 3
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6250264758906005779
@@ -2052,9 +2052,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  initial_health: 100
   is_Player: 0
   is_Cannibal: 1
   damage: 10
+  die_Sound: {fileID: 0}
+  health_Sound: {fileID: 0}
+  die_Text: {fileID: 0}
 --- !u!114 &6250264758906005787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,6 +2082,7 @@ MonoBehaviour:
   wait_Before_Attack: 2
   attack_Point: {fileID: 901400269}
   damage: 5
+  FPCamera: {fileID: 0}
 --- !u!1 &2536239983430617973
 GameObject:
   m_ObjectHideFlags: 0

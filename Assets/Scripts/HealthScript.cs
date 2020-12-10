@@ -31,8 +31,9 @@ public class HealthScript : MonoBehaviour
 
     void Awake()
     {
-
-        die_Text.text = "";
+        if(gameObject.name == "Player") { 
+            die_Text.text = "";
+        }
 
         if (is_Cannibal)
         {
@@ -122,7 +123,7 @@ public class HealthScript : MonoBehaviour
 
             //Start Coroutine
 
-            //EnemyManager.instance.EnemyDied(true);
+            EnemyManager.instance.EnemyDied(true);
         }
 
         if (is_Player)
@@ -133,7 +134,7 @@ public class HealthScript : MonoBehaviour
                 enemies[i].GetComponent<EnemyController>().enabled = false;
             }
 
-            //EnemyManager.instance.StopSpawning();
+            EnemyManager.instance.StopSpawning();
 
             GetComponent<PlayerMovement>().enabled = false;
             GetComponent<PlayerAttack>().enabled = false;
