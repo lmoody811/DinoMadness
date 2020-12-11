@@ -1817,7 +1817,10 @@ MonoBehaviour:
     -- Sprint
 
 
-    Space -- Jump'
+    Space -- Jump
+
+
+    Esc -- Re-enable Mouse'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4282c0f9744b6984db4725b902f27475, type: 2}
   m_sharedMaterial: {fileID: -3635113652624714823, guid: 4282c0f9744b6984db4725b902f27475, type: 2}
@@ -1844,8 +1847,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2062,7 +2065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 275}
+  m_AnchoredPosition: {x: 0, y: 325}
   m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559699715
@@ -2091,8 +2094,18 @@ MonoBehaviour:
     r -- Restart Level
 
 
-    5 --
-    Max Damage
+    1 --
+    Jump to Level 1
+
+
+    2 -- Jump to Level 2
+
+
+    3 -- Jump to Level 3
+
+
+    5
+    -- Max Damage
 
 
     6 -- Unlimited Health
@@ -2101,11 +2114,11 @@ MonoBehaviour:
     7 -- Low Gravity
 
 
-    8 -- 2x Speed
+    8 -- 2x
+    Speed
 
 
-    9
-    -- 4x Speed
+    9 -- 4x Speed
 
 
     0 -- 8x Speed'
@@ -2135,8 +2148,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
