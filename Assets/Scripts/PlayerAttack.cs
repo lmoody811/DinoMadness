@@ -192,16 +192,16 @@ public class PlayerAttack : MonoBehaviour
         print(total_Collected_Dinos);
         string winningText = "";
 
-        if(total_Collected_Dinos <= 15 && total_Collected_Dinos >= 13) { 
+        if(total_Collected_Dinos <= 18 && total_Collected_Dinos >= 16) { 
             winningText = "Congrats! You collected " + total_Collected_Dinos + " dinosaurs. You made it out by the skin of your teeth. Hopefully you survive your injuries.";
         }
-        else if(total_Collected_Dinos == 20) { 
+        else if(total_Collected_Dinos == 22) { 
             winningText = "Congrats! You collected " + total_Collected_Dinos + " dinosaurs. You made it out with all of the dinosaur DNA! Good luck selling these and making a fortune.";
         }
-        else if(total_Collected_Dinos <= 19 && total_Collected_Dinos >= 16) { 
+        else if(total_Collected_Dinos <= 21 && total_Collected_Dinos >= 19) { 
             winningText = "Congrats! You collected " + total_Collected_Dinos + " dinosaurs. You survived the island. Stand by for your next mission.";
         }
-        else if(total_Collected_Dinos <= 13) { 
+        else if(total_Collected_Dinos <= 15) { 
             winningText = "You collected " + total_Collected_Dinos + " dinosaurs. You did not collect enough DNA. You are stuck on the island forever. Good luck with that.";
         }
 
