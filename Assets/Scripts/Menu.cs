@@ -8,12 +8,15 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public TextMeshProUGUI title;
-    public TextMeshProUGUI goal;
+    public TextMeshProUGUI[] goals;
     public TextMeshProUGUI developers;
     public GameObject startBTN;
     public GameObject backBTN;
+    public GameObject nextBTN;
     public GameObject goalBTN;
     public GameObject quitBTN;
+
+    private int goalPage;
 
     void Start()
     {
@@ -34,10 +37,32 @@ public class Menu : MonoBehaviour
         Application.Quit();
     }
 
+    public void nextPage()
+    {
+        goals[goalPage].enabled = false;
+        goals[++goalPage].enabled = true;
+
+        if (goalPage == goals.Length - 1)
+        {
+            nextBTN.SetActive(false);
+        }
+
+        GameObject.Find("EventSystem").GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+    }
+
     public void showInstructions()
     {
         backBTN.SetActive(true);
-        goal.enabled = true;
+        goalPage = 0;
+        goals[0].enabled = true;
+
+        if (goalPage == goals.Length - 1)
+        {
+            nextBTN.SetActive(false);
+        } else
+        {
+            nextBTN.SetActive(true);
+        }
 
         goalBTN.SetActive(false);
         title.enabled = false;
@@ -60,6 +85,11 @@ public class Menu : MonoBehaviour
         goalBTN.SetActive(true);
 
         backBTN.SetActive(false);
-        goal.enabled = false;
+        nextBTN.SetActive(false);
+
+        foreach (var goal in goals)
+        {
+            goal.enabled = false;
+        }
     }
 }
