@@ -4,6 +4,7 @@ Summary
 1. The game is a first-person shooter in which the objective is to collect the dinosaurs while avoiding or shooting the dragons. 
 
 2. Contributions: 
+
 Lauren Moody: Finished tutorial, created levels 1,2, & 3, added dragon enemy, dinosaurs, ability to collect dinosaurs, dinosaur statues, health station, sounds, different endings, game UI(level text, number of Dinosaurs collected).
 
 
