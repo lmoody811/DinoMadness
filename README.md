@@ -57,4 +57,6 @@ Press 6: The player has unlimited health.
 Press 7: The player has low gravity.
 Press 8: The player runs 2x walking speed.
 Press 9: The player runs 4x walking speed.
-Press 0: The player runs 8x walking speed. 
+Press 0: The player runs 8x walking speed.
+
+5. Note: A build of this game cannot be pushed to GitHub due to size constraints.  Everthing necessary to rebuild should be in the repo.
