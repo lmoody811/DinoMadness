@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -40,6 +41,19 @@ public class HealthScript : MonoBehaviour
             enemy_Anim = GetComponent<EnemyAnimator>();
             enemy_Controller = GetComponent<EnemyController>();
             navAgent = GetComponent<NavMeshAgent>();
+
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            if (currentScene == "Level2")
+            {
+                health *= 2;
+                initial_health *= 2;
+            }
+            else if (currentScene == "Level3")
+            {
+                health *= 5;
+                initial_health *= 5;
+            }
 
             //get enemy audio
         }

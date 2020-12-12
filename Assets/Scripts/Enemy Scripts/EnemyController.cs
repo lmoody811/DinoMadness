@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public enum EnemyState
 {
@@ -59,6 +60,17 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindWithTag(Tags.PLAYER_TAG).transform;
 
         enemy_Audio = GetComponentInChildren<EnemyAudio>();
+
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "Level2")
+        {
+            chase_Distance *= 2;
+        }
+        else if (currentScene == "Level3")
+        {
+            chase_Distance *= 5;
+        }
     }
     void Start()
     {
