@@ -7,6 +7,8 @@ Summary
 
 Lauren Moody: Finished tutorial, created levels 1,2, & 3, added dragon enemy, dinosaurs, ability to collect dinosaurs, dinosaur statues, health station, sounds, different endings, game UI(level text, number of Dinosaurs collected).
 
+Derrick Courtney: Watched tutorial, added cheats, created menu, placed dragons, made video.
+
 
 
 3. Percentages: 
